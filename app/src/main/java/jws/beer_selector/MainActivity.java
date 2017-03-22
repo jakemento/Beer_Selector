@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // HIDE AND SHOW THE VISIBILITY and set a RUNNABLE on postDELAY to HIDE TEXT VIEW //
+
     public void onClickFindBeer(View view) {
 
         String beerType = String.valueOf(mColorSpinner.getSelectedItem());
@@ -42,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
         }
         mBrands.setText(brandsFormatted);
 
+    }
 
+
+
+        // HIDE AND SHOW THE VISIBILITY and set a RUNNABLE on postDELAY to HIDE TEXT VIEW //
 //        if (mBrands.getVisibility() == View.INVISIBLE) {
 //            mBrands.setVisibility(View.VISIBLE);
 //        }
@@ -52,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
 //                mBrands.setVisibility(View.INVISIBLE);
 //            }
 //           }, 1950);
-    }
-
 }
+
+
 
 
