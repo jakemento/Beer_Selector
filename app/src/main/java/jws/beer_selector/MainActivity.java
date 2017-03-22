@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 mBrands.setVisibility(View.INVISIBLE);
             }
-           }, 1850);
+           }, 1950);
 
     }
 
