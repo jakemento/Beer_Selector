@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -14,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     String[] beer_colors = {"light", "amber", "brown","dark"};
     @Bind(R.id.beer_color) Spinner mColorSpinner;
     @Bind(R.id.brands) TextView mBrands;
-
+    private BeerExpert expert = new BeerExpert();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +32,26 @@ public class MainActivity extends AppCompatActivity {
 
     // HIDE AND SHOW THE VISIBILITY and set a RUNNABLE on postDELAY to HIDE TEXT VIEW //
     public void onClickFindBeer(View view) {
-        if (mBrands.getVisibility() == View.INVISIBLE) {
-            mBrands.setVisibility(View.VISIBLE);
-        }
-        mBrands.setText(String.valueOf("you've selected " + mColorSpinner.getSelectedItem()));
-        mBrands.postDelayed(new Runnable() {
-            public void run() {
-                mBrands.setVisibility(View.INVISIBLE);
-            }
-           }, 1950);
 
+        String beerType = String.valueOf(mColorSpinner.getSelectedItem());
+
+        List<String> brandsList = expert.getBrands(beerType);
+        StringBuilder brandsFormatted = new StringBuilder();
+        for (String brand : brandsList) {
+            brandsFormatted.append(brand).append('\n');
+        }
+        mBrands.setText(brandsFormatted);
+
+
+//        if (mBrands.getVisibility() == View.INVISIBLE) {
+//            mBrands.setVisibility(View.VISIBLE);
+//        }
+//        mBrands.setText(String.valueOf("you've selected " + mColorSpinner.getSelectedItem()));
+//        mBrands.postDelayed(new Runnable() {
+//            public void run() {
+//                mBrands.setVisibility(View.INVISIBLE);
+//            }
+//           }, 1950);
     }
 
 }
